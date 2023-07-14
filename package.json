@@ -18,8 +18,17 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@types/chroma-js": "^2.4.0",
+    "@types/wcag-contrast": "^3.0.0",
+    "@visa/bar-chart": "^6.1.0",
+    "@visa/charts": "^7.1.0",
+    "@visa/charts-angular": "^4.1.0",
+    "@visa/charts-types": "^0.6.0",
+    "chroma-js": "^2.4.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "wcag-contrast": "^3.0.0",
+    "web-component-essentials": "^0.0.4",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

@@ -27,12 +27,15 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/public"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+            ],
+
           },
           "configurations": {
             "production": {
@@ -95,10 +98,14 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+        
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7b15531f-cc79-45ec-909f-4d876fc763fd"
   }
 }
