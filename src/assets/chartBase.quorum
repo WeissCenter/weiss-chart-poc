@@ -12,14 +12,8 @@ use Libraries.Compute.Statistics.DataFrame
     // read in data from dog csv
     
     // identify columns
-    
-    // text-based columns
-    TextColumn col
-   TextColumn col2
-    frame:AddColumnOnLoad(1,col)
-    frame:AddColumnOnLoad(2,col2)
 
-    
+
     // number-based columns
     NumberColumn numCol
     NumberColumn numCol1
@@ -42,8 +36,20 @@ use Libraries.Compute.Statistics.DataFrame
     
     // pull out specified columns from csv that we are comparing
     
-    frame:AddSelectedFactors("Autism") 
-     frame:AddSelectedFactors("Speech or language impairment") 
+frame:AddSelectedColumns("All disabilities")
+frame:AddSelectedColumns("Autism")
+frame:AddSelectedColumns("Deaf-blindness")
+frame:AddSelectedColumns("Developmental delay")
+frame:AddSelectedColumns("Emotional disturbance")
+frame:AddSelectedColumns("Hearing impairments")
+frame:AddSelectedColumns("Intellectual disabilities")
+frame:AddSelectedColumns("Multiple disabilities")
+frame:AddSelectedColumns("Orthopedic impairments")
+frame:AddSelectedColumns("Other health impairments")
+frame:AddSelectedColumns("Specific learning disabilities")
+frame:AddSelectedColumns("Speech or language impairments")
+frame:AddSelectedColumns("Traumatic brain injury")
+frame:AddSelectedColumns("Visual impairments")
 
     // using the data frame, format data by creating a bar chart component
     BarChart chart = frame:BarChart()

@@ -59,19 +59,8 @@ export class AppComponent  {
     // read in data from dog csv
     
     // identify columns
-    
-    // text-based columns
-    TextColumn col
-    TextColumn col1
-    TextColumn col2
-    TextColumn col3
-    TextColumn col4
-    frame:AddColumnOnLoad(1,col)
-    frame:AddColumnOnLoad(2,col1)
-    frame:AddColumnOnLoad(3,col2)
-    frame:AddColumnOnLoad(10,col3)
-    frame:AddColumnOnLoad(11, col4)
-    
+
+
     // number-based columns
     NumberColumn numCol
     NumberColumn numCol1
@@ -88,26 +77,37 @@ export class AppComponent  {
     frame:AddColumnOnLoad(8,numCol5)
     frame:AddColumnOnLoad(9,numCol6)
     
-    frame:Load("assets/data/Alabama.csv")
+    frame:Load("assets/data/${this.selectedState}.csv")
     
     
     
     // pull out specified columns from csv that we are comparing
     
-    frame:AddSelectedFactors("Breed Group") // this will pull out the breed group from table and label on the x axis
-    frame:AddSelectedColumns("Maximum Weight") // this will pull out the max weight from table and label on the y axis
-    frame:AddSelectedColumns("Minimum Weight")
-    frame:AddSelectedColumns("Maximum Height")
-    frame:AddSelectedColumns("Minimum Height")
-    
+frame:AddSelectedColumns("All disabilities")
+frame:AddSelectedColumns("Autism")
+frame:AddSelectedColumns("Deaf-blindness")
+frame:AddSelectedColumns("Developmental delay")
+frame:AddSelectedColumns("Emotional disturbance")
+frame:AddSelectedColumns("Hearing impairments")
+frame:AddSelectedColumns("Intellectual disabilities")
+frame:AddSelectedColumns("Multiple disabilities")
+frame:AddSelectedColumns("Orthopedic impairments")
+frame:AddSelectedColumns("Other health impairments")
+frame:AddSelectedColumns("Specific learning disabilities")
+frame:AddSelectedColumns("Speech or language impairments")
+frame:AddSelectedColumns("Traumatic brain injury")
+frame:AddSelectedColumns("Visual impairments")
+
     // using the data frame, format data by creating a bar chart component
     BarChart chart = frame:BarChart()
     
     chart:ShowLegend(false)
-    chart:SetTitle("Example of displaying Dogs.csv")
+    chart:SetTitle("IDEA Data")
     
     // display chart on window
     chart:Display(100,100)`
+
+    this.quorumContainer?.nativeElement.childNodes.forEach((c) => c.remove())
 
 
     InjectQuorumEnvironment(this.quorumContainer?.nativeElement, 'Chart POC', code)
