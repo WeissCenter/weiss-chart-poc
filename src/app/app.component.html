@@ -1,6 +1,11 @@
 <header>
     <h1>Chart POC</h1>
 
+    <p>
+        Tool for accessibility testing different chart libraries and tools with IDEA child count data.
+        <a href="https://nolatin.com/share/child-count-001/cd067719-d0ab-4427-a72d-60b936488097">Retrieved from nolatin</a>
+    </p>
+
 </header>
 
 <main>
@@ -14,13 +19,17 @@
     </div>
 
 
-    <div class="clustred-bar-chart">
-        <clustered-bar-chart [margin]="{top: 50, left: 10, right: 10, bottom: 10}"  [xAxis]="{label: 'Count', visible: true}" [yAxis]="{label: '', visible: true}" [legend]="{visible: true, interactive: true}" [colors]="colors"  layout="horizontal" *ngIf="selectedState.length"  width="800" height="600" [groupAccessor]="props.groupAccessor" [ordinalAccessor]="props.ordinalAccessor" [valueAccessor]="props.valueAccessor" [data]='props.data' ></clustered-bar-chart>
-    </div>
-
-    <div #quorum id="quorum-container" class="quorum-container">
-
-    </div>
+    <ng-container *ngIf="selectedState.length">
+        <div class="clustred-bar-chart">
+            <clustered-bar-chart [mainTitle]="'Visa Chart Components'" [subTitle]="'Child count for disabilities'"  [margin]="{top: 50, left: 10, right: 10, bottom: 10}"  [xAxis]="{label: 'Count', visible: true}" [yAxis]="{label: '', visible: true}" [legend]="{visible: true, interactive: true}" [colors]="colors"  layout="horizontal" *ngIf="selectedState.length"  width="800" height="600" [groupAccessor]="props.groupAccessor" [ordinalAccessor]="props.ordinalAccessor" [valueAccessor]="props.valueAccessor" [data]='props.data' ></clustered-bar-chart>
+        </div>
+    
+        <h2>Quorum Chart</h2>
+        <p>Child count for disabilities</p>
+        <div #quorum id="quorum-container" class="quorum-container">
+    
+        </div>
+    </ng-container>
 
 
 </main>
