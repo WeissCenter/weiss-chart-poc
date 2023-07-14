@@ -18,7 +18,7 @@
         <clustered-bar-chart [margin]="{top: 50, left: 10, right: 10, bottom: 10}"  [xAxis]="{label: 'Count', visible: true}" [yAxis]="{label: '', visible: true}" [legend]="{visible: true, interactive: true}" [colors]="colors"  layout="horizontal" *ngIf="selectedState.length"  width="800" height="600" [groupAccessor]="props.groupAccessor" [ordinalAccessor]="props.ordinalAccessor" [valueAccessor]="props.valueAccessor" [data]='props.data' ></clustered-bar-chart>
     </div>
 
-    <div #quorum class="quorum-container">
+    <div #quorum id="quorum-container" class="quorum-container">
 
     </div>
 

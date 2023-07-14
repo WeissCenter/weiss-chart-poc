@@ -1,6 +1,9 @@
-import { AfterContentInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterContentInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 
 declare let InjectQuorumEnvironment: any;
+declare let currentUIContainer_$Global_: any;
+declare let Start: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -27,7 +30,7 @@ export class AppComponent  {
     states: [] as string[]
 }
 
-  constructor(){
+  constructor(@Inject(DOCUMENT) public doc: Document){
 
 
 
@@ -110,9 +113,34 @@ frame:AddSelectedColumns("Visual impairments")
     this.quorumContainer?.nativeElement.childNodes.forEach((c) => c.remove())
 
 
-    InjectQuorumEnvironment(this.quorumContainer?.nativeElement, 'Chart POC', code)
+    const formData = new FormData();
+
+    formData.append('code', code);
+    formData.append('pageURL', window.location.href);
+    formData.append('ideName', 'weiss-poc');
+    formData.append('build_only', '1');
+    formData.append('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
+
+    fetch("https://quorumlanguage.com/fastrun.php", {method: 'POST', body: formData})
+    .then((res) => res.text())
+    .then(result => {
+
+      const script = document.createElement('script');
+
+      currentUIContainer_$Global_ = 'quorum-container';
+
+      script.id = 'Runnable'
+
+      script.innerHTML = result;
+
+      this.doc.head.appendChild(script);
+
+      Start();
 
 
+    })
+
+  //  InjectQuorumEnvironment(this.quorumContainer?.nativeElement, 'Chart POC', code)
 
 
   }
