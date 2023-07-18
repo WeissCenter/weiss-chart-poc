@@ -9,3 +9,4 @@ View the live demo [here](https://polite-pebble-08be07a0f.3.azurestaticapps.net/
 
 - [Visa Chart Components](https://developer.visa.com/pages/chart-components)
 - [Quorum Langauge](https://quorumlanguage.com/)
+- [Chart2Music](https://chart2music.com/docs/)

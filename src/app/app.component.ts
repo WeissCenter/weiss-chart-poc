@@ -4,6 +4,7 @@ import { AfterContentInit, Component, ElementRef, Inject, OnInit, ViewChild } fr
 declare let InjectQuorumEnvironment: any;
 declare let currentUIContainer_$Global_: any;
 declare let Start: any;
+import c2mChart from "chart2music";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,9 +15,13 @@ export class AppComponent  {
 
   @ViewChild('quorum') quorumContainer?: ElementRef<HTMLDivElement>
 
+  @ViewChild('chart') chart?: ElementRef<HTMLDivElement>
+
+
   public selectedState = '';
 
-  
+
+
 
   private data = [];
 
@@ -161,9 +166,27 @@ frame:AddSelectedColumns("Visual impairments")
     }) as any;
 
     
-
-
+    
     this.props.data = graph;
+    const categories = graph.map((gp: any) => gp.disability)
+
+    setTimeout(() => {
+
+     
+      const {err} = c2mChart({
+        type: "bar" as any,
+        element: this.chart?.nativeElement as any,
+        cc: this.doc.getElementById('cc') as any,
+        axes: {
+          x: {format: (idx) => categories[idx]},
+          y: {label: 'State'}
+        },
+        data: graph.map((g: any) => g.value)
+    });
+
+    console.log(err)
+
+    }, 1000)
 
     this.buildQuorum();
   }
