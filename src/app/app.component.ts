@@ -86,7 +86,7 @@ export class AppComponent  {
     
     // pull out specified columns from csv that we are comparing
     
-frame:AddSelectedColumns("All disabilities")
+
 frame:AddSelectedColumns("Autism")
 frame:AddSelectedColumns("Deaf-blindness")
 frame:AddSelectedColumns("Developmental delay")
