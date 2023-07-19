@@ -1,10 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterContentInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-
 declare let InjectQuorumEnvironment: any;
 declare let currentUIContainer_$Global_: any;
 declare let Start: any;
 import c2mChart from "chart2music";
+import Chart from 'chart.js/auto';
+// @ts-ignore
+import chartjs2music from "chartjs-plugin-chart2music";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +18,7 @@ export class AppComponent  {
   @ViewChild('quorum') quorumContainer?: ElementRef<HTMLDivElement>
 
   @ViewChild('chart') chart?: ElementRef<HTMLDivElement>
-
+  @ViewChild('chartjs') chartjs?: ElementRef<HTMLCanvasElement>
 
   public selectedState = '';
 
@@ -189,9 +191,31 @@ frame:AddSelectedColumns("Visual impairments")
         data: graph.map((g: any) => g.value)
     });
 
+
+    const chart = new Chart(this.chartjs!.nativeElement, {
+      type: 'bar',
+      plugins: [chartjs2music],
+
+  
+      data: {
+        labels: graph.map((item: any) => item.disability),
+        datasets:[
+          {
+            label: 'Disability',
+            data: graph.map((item: any) => item.value)
+          }
+        ]
+      }
+    });
+
     }, 1000)
 
     this.buildQuorum();
+
+
+
+
+
   }
 
 
