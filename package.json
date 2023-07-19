@@ -24,6 +24,7 @@
     "@visa/charts": "^7.1.0",
     "@visa/charts-angular": "^4.1.0",
     "@visa/charts-types": "^0.6.0",
+    "chart.js": "^4.3.0",
     "chart2music": "^1.11.0",
     "chroma-js": "^2.4.2",
     "rxjs": "~7.8.0",

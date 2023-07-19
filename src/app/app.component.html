@@ -21,7 +21,7 @@
 
     <ng-container *ngIf="selectedState.length">
         <div class="clustred-bar-chart">
-            <clustered-bar-chart #chart [mainTitle]="'Visa Chart Components Clustered Bar Chart'" [subTitle]="'Child count for disabilities'"  [margin]="{top: 50, left: 10, right: 10, bottom: 10}"  [xAxis]="{label: 'Count', visible: true}" [yAxis]="{label: '', visible: true}" [legend]="{visible: true, interactive: true}" [colors]="colors"  layout="horizontal" *ngIf="selectedState.length"  width="800" height="600" [groupAccessor]="props.groupAccessor" [ordinalAccessor]="props.ordinalAccessor" [valueAccessor]="props.valueAccessor" [data]='props.data' ></clustered-bar-chart>
+            <clustered-bar-chart #chart [accessibility]="props.accessibility" [mainTitle]="'Visa Chart Components Clustered Bar Chart'" [subTitle]="'Child count for disabilities'"  [margin]="{top: 50, left: 10, right: 10, bottom: 10}"  [xAxis]="{label: 'Count', visible: true}" [yAxis]="{label: '', visible: true}" [legend]="{visible: true, interactive: true}" [colors]="colors"  layout="horizontal" *ngIf="selectedState.length"  width="800" height="600" [groupAccessor]="props.groupAccessor" [ordinalAccessor]="props.ordinalAccessor" [valueAccessor]="props.valueAccessor" [data]='props.data' ></clustered-bar-chart>
             <div id="cc"></div>
         </div>
     

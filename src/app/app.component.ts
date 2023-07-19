@@ -32,7 +32,14 @@ export class AppComponent  {
     valueAccessor: 'value',
     groupAccessor: 'state',
     data: [],
-    states: [] as string[]
+    states: [] as string[],
+    accessibility: {
+      longDescription: 'A bar chart showing the child counts per disability in a state',
+      executiveSummary: 'IDEA child count',
+      elementsAreInterface: false,
+      uniqueID: crypto.randomUUID()
+
+    }
 }
 
   constructor(@Inject(DOCUMENT) public doc: Document){
@@ -168,23 +175,19 @@ frame:AddSelectedColumns("Visual impairments")
     
     
     this.props.data = graph;
-    const categories = graph.map((gp: any) => gp.disability)
+    const disabilities = this.props.data.map((gp: any) => gp.disability)
 
     setTimeout(() => {
-
-     
       const {err} = c2mChart({
         type: "bar" as any,
         element: this.chart?.nativeElement as any,
         cc: this.doc.getElementById('cc') as any,
         axes: {
-          x: {format: (idx) => categories[idx]},
-          y: {label: 'State'}
+          x: {label: 'Disability', format: (idx) => disabilities[idx]},
+          y: {label: 'Child Count'}
         },
         data: graph.map((g: any) => g.value)
     });
-
-    console.log(err)
 
     }, 1000)
 
