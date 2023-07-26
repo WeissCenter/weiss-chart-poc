@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterContentInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, HostListener, Inject, OnInit, ViewChild } from '@angular/core';
 declare let InjectQuorumEnvironment: any;
 declare let currentUIContainer_$Global_: any;
 declare let Start: any;
@@ -17,11 +17,26 @@ export class AppComponent  {
 
   @ViewChild('quorum') quorumContainer?: ElementRef<HTMLDivElement>
 
-  @ViewChild('chart') chart?: ElementRef<HTMLDivElement>
+  @ViewChild('chart') chart?: ElementRef<any>
   @ViewChild('chartjs') chartjs?: ElementRef<HTMLCanvasElement>
+
+  @ViewChild('chartContainer') chartContainer?: ElementRef<HTMLDivElement>
 
   public selectedState = '';
 
+
+  public width: number = window.innerWidth;
+  public height: number = 350;
+
+
+  @HostListener('window:resize', ['$event'])
+  private onResize(){
+    if(!this.chartContainer){
+      return;
+    }
+    this.width = this.chartContainer.nativeElement.clientWidth - 15;
+    this.height = 350;
+  }
 
 
 
@@ -158,6 +173,11 @@ frame:AddSelectedColumns("Visual impairments")
 
   }
 
+
+  onVisaClick(event: any){
+    console.log(event.detail.data)
+  }
+
   onChange(){
     
     const stateData = this.data.filter((item: any) => item.State === this.selectedState);
@@ -187,7 +207,7 @@ frame:AddSelectedColumns("Visual impairments")
           x: {label: 'Disability', format: (idx) => disabilities[idx]},
           y: {label: 'Child Count'}
         },
-        data: graph.map((g: any) => g.value)
+        data: graph.map((g: any) => g.value),
     });
 
 
@@ -228,7 +248,7 @@ frame:AddSelectedColumns("Visual impairments")
               'rgba(153, 102, 255, 1)',
               'rgba(255, 159, 64, 1)'
             ],
-            label: 'Disability',
+            label: 'Child Count',
             data: graph.map((item: any) => item.value)
           }
         ]
